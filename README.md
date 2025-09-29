@@ -126,6 +126,27 @@ scrcpy
 </table>
 <br />
 
+### Running with scrcpy-web
+
+You can also use the [`scrcpy-web`](https://github.com/Shmayro/ws-scrcpy-docker) service, which provides a web-based interface for remotely controlling the Android emulator. To do so, you need to run the following container:
+
+```bash
+docker compose up android-emulator scrcpy-web
+```
+or with only docker
+
+```bash
+docker run -d --name scrcpy-web \
+  --rm \
+  -p 8000:8000 \
+  shmayro/scrcpy-web:latest
+```
+
+Then, open a web browser and navigate to `http://localhost:8000` to access the scrcpy-web interface.
+
+### Requirements for GPU acceleration
+To run with GPU acceleration, you need to install the `nvidia-container-toolkit` on your host machine. Please refer to this [installation guide](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html) for more information.
+
 ### Customize the image
 
 It is possible to customize the API level (Android version) and the image type (Google APIs vs PlayStore) when building the image.
